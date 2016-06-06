@@ -20,7 +20,7 @@ class BlueServiceProvider extends ServiceProvider
         $this->loadViewsFrom(base_path('resources/views'), 'Blue');
         
         $this->publishes([
-            __DIR__.'/resources/views' => base_path('resources/views');
+            __DIR__.'/resources/views' => base_path('resources/views')
         ]);
     }
 
