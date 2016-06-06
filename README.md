@@ -1,14 +1,13 @@
-# :package_name
+# Blue CMS
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+Premier SEO driven CMS powered by Laravel
 
 ## Install
 
 Via Composer
 
-``` bash
-$ composer require MeestorHok/Blue
+``` php
+"MeestorHok/Blue" : "0.1.*"
 ```
 
 ###Update the Laravel Framework
