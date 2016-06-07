@@ -23,22 +23,22 @@ Add the following to config/app.php
 
 ``` php
 'providers' => [
-    MeestorHok\Blue\BlueServiceProvider::class,
-    Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-    Collective\Html\HtmlServiceProvider::class
+    Collective\Html\HtmlServiceProvider::class, // HTML resource *required
+    Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class, // SEO resource *required
+    MeestorHok\Blue\BlueServiceProvider::class // Blue CMS
 ],
 'aliases' => [
-    'Html' => Collective\Html\HtmlFacade::class,
-    'Form' => Collective\Html\FormFacade::class,
-    'SEO' => Artesaos\SEOTools\Facades\SEOTools::class
+    'Html' => Collective\Html\HtmlFacade::class, // HTML facade *required
+    'Form' => Collective\Html\FormFacade::class, // HTML Form facade *required
+    'SEO' => Artesaos\SEOTools\Facades\SEOTools::class // SEO facade *required
 ]
 ```
 
-then, run these cli commands to integrate the code
+then, run these cli commands to setup the database
 
 ``` bash
-php artisan vendor:publish
-php artisan migrate
+$ php artisan vendor:publish
+$ php artisan migrate
 ```
 
 ## Usage

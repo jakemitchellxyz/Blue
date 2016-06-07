@@ -13,15 +13,11 @@ class BlueServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(!$this->app->routesAreCached()) {
-            require __DIR__.'/routes.php';
-        }
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'Blue');
         
-        $this->loadViewsFrom(base_path('resources/views'), 'Blue');
-        
-        $this->publishes([
-            __DIR__.'/resources/views' => base_path('resources/views')
-        ]);
+        // $this->publishes([
+        //     __DIR__.'/migrations' => database_path('migrations')
+        // ], 'migrations');
     }
 
     /**
@@ -31,6 +27,7 @@ class BlueServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        include __DIR__.'/Http/routes.php';
+        $this->app->make(__NAMESPACE__.'\Http\Controllers\AdminController');
     }
 }
