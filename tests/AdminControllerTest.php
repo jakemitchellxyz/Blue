@@ -2,7 +2,7 @@
 
 use MeestorHok\Blue\Http\Controllers\AdminController;
 
-class AdminControllerTest extends \Illuminate\Foundation\Testing\TestCase
+class AdminControllerTest extends TestCase
 {
     /**
      * 'admin' Route
