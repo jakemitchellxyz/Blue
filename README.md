@@ -2,10 +2,10 @@
 
 [![Build Status][ico-build]][link-travis]
 [![Quality Score][ico-scrutinizer]][link-scrutinizer]
-[![Latest Stable Version][ico-stable]][link-packagist]
 [![Latest Unstable Version][ico-unstable]][link-packagist]
 [![License][ico-license]][link-license]
 [![Total Downloads][ico-downloads]][link-packagist]
+<!--[![Latest Stable Version][ico-stable]][link-packagist]-->
 
 Premier SEO driven CMS powered by Laravel
 
