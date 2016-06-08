@@ -1,1 +1,1 @@
-<!DOCTYPE html><html><head><title>Yo yo yo!</title></head><body>@yield('body')</body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">{!! SEO::generate() !!}</head><body>@yield('body')</body></html>
