@@ -11,6 +11,8 @@ install:
   - composer create-project laravel/laravel
   - cd ./laravel
 before_script:
+- cp .env.travis .env
+- export APP_ENV="testing"
 - mysql -e 'create database c9;'
 - php artisan migrate
 
