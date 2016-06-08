@@ -1,11 +1,11 @@
 # Blue CMS
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
-[![Quality Score][ico-code-quality]][link-code-quality]
-[![Total Downloads][ico-downloads]][link-downloads]
+[![Build Status][ico-build]][link-scrutinizer]
+[![Quality Score][ico-scrutinizer]][link-scrutinizer]
+[![Latest Stable Version][ico-stable]][link-packagist]
+[![Total Downloads][ico-downloads]][link-packagist]
+[![Latest Unstable Version][ico-unstable][link-packagist]
+[![License][ico-license]][link-license]
 
 Premier SEO driven CMS powered by Laravel
 
@@ -60,19 +60,18 @@ If you discover any security related issues, please email jake@jmitchell.co inst
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File][link-license] for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/meestorhok/blue.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/meestorhok/blue/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/meestorhok/blue.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/meestorhok/blue.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/meestorhok/blue.svg?style=flat-square
+[ico-stable]: https://poser.pugx.org/meestorhok/blue/v/stable
+[ico-unstable]: https://poser.pugx.org/meestorhok/blue/v/unstable
+[ico-downloads]: https://poser.pugx.org/meestorhok/blue/downloads
+[ico-license]: https://poser.pugx.org/meestorhok/blue/license
+[ico-scrutinizer]: https://scrutinizer-ci.com/g/MeestorHok/Blue/badges/quality-score.png?b=master
+[ico-build]: https://scrutinizer-ci.com/g/MeestorHok/Blue/badges/build.png?b=master
+
 
 [link-packagist]: https://packagist.org/packages/meestorhok/blue
-[link-travis]: https://travis-ci.org/MeestorHok/Blue
-[link-scrutinizer]: https://scrutinizer-ci.com/g/meestorhok/blue/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/meestorhok/blue
-[link-downloads]: https://packagist.org/packages/meestorhok/blue
+[link-scrutinizer]: https://scrutinizer-ci.com/g/meestorhok/blue
+[link-license]: ./LICENSE.md
 [link-author]: https://github.com/MeestorHok
 [link-contributors]: ../../contributors
