@@ -4,7 +4,7 @@
 [![Quality Score][ico-scrutinizer]][link-scrutinizer]
 [![Latest Stable Version][ico-stable]][link-packagist]
 [![Total Downloads][ico-downloads]][link-packagist]
-[![Latest Unstable Version][ico-unstable][link-packagist]
+[![Latest Unstable Version][ico-unstable]][link-packagist]
 [![License][ico-license]][link-license]
 
 Premier SEO driven CMS powered by Laravel
