@@ -20,7 +20,6 @@
         "laravelcollective/html": "^5.2"
     },
     "require-dev": {
-        "orchestra/testbench": "^3.2",
         "phpunit/phpunit": "^4.8"
     },
     "autoload": {
