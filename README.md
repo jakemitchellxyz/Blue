@@ -1,5 +1,7 @@
 # Blue CMS
 
+## Still Under Initial Development
+
 [![Build Status][ico-build]][link-travis]
 [![Quality Score][ico-scrutinizer]][link-scrutinizer]
 [![Latest Unstable Version][ico-unstable]][link-packagist]
