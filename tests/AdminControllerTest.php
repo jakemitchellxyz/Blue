@@ -2,11 +2,7 @@
 
 use MeestorHok\Blue\Http\Controllers\AdminController;
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-
-class AdminControllerTest extends TestCase
+class AdminControllerTest extends \Orchestra\Testbench\TestCase
 {
     /**
      * 'admin' Route
