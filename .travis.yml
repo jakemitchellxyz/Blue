@@ -7,13 +7,15 @@ php:
 matrix:
     allow_failures:
         - php: hhvm
-install:
-  - composer create-project laravel/laravel
-  - cd ./laravel
-before_script:
-- cp .env.travis .env
-- export APP_ENV="testing"
-- mysql -e 'create database c9;'
-- php artisan migrate
+before_install:
+  - composer self-update
+  - composer create-project laravel/laravel 
+  - cd ./laravel 
+  - composer require MeestorHok/Blue dev-master 
+  - composer update
+  - cp ./vendor/MeestorHok/Blue/tests/config/database.php ./app/config/testing/ 
+  - cp ./vendor/MeestorHok/Blue/tests/config/app.php ./app/config/testing/ 
+  - export APP_ENV="testing"
+  - cd ./vendor/MeestorHok/Blue
 
 script: phpunit --configuration phpunit.xml
