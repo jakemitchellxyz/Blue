@@ -2,7 +2,7 @@
 
 use MeestorHok\Blue\Http\Controllers\AdminController;
 
-class AdminControllerTest extends \Orchestra\Testbench\TestCase
+class AdminControllerTest extends PHPUnit_Framework_TestCase
 {
     /**
      * 'admin' Route
