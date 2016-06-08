@@ -31,3 +31,5 @@ class AutoLoader {
      }
 
 }
+
+spl_autoload_register(array('AutoLoader', 'loadClass'));
