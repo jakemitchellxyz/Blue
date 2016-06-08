@@ -70,7 +70,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-downloads]: https://img.shields.io/packagist/dt/meestorhok/blue.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/meestorhok/blue
-[link-travis]: https://travis-ci.org/meestorhok/blue
+[link-travis]: https://travis-ci.org/MeestorHok/Blue
 [link-scrutinizer]: https://scrutinizer-ci.com/g/meestorhok/blue/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/meestorhok/blue
 [link-downloads]: https://packagist.org/packages/meestorhok/blue
