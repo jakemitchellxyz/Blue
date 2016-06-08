@@ -8,8 +8,8 @@ matrix:
     allow_failures:
         - php: hhvm
 install:
-  - composer self-update
-  - composer install --prefer-source --no-interaction --dev
+  - composer create-project laravel/laravel
+  - cd ./laravel
 before_script:
 - mysql -e 'create database c9;'
 - php artisan migrate
