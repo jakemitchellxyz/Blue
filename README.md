@@ -1,6 +1,6 @@
 # Blue CMS
 
-[![Build Status][ico-build]][link-scrutinizer]
+[![Build Status][ico-build]][link-travis]
 [![Quality Score][ico-scrutinizer]][link-scrutinizer]
 [![Latest Stable Version][ico-stable]][link-packagist]
 [![Latest Unstable Version][ico-unstable]][link-packagist]
@@ -67,9 +67,9 @@ The MIT License (MIT). Please see [License File][link-license] for more informat
 [ico-downloads]: https://poser.pugx.org/meestorhok/blue/downloads
 [ico-license]: https://poser.pugx.org/meestorhok/blue/license
 [ico-scrutinizer]: https://scrutinizer-ci.com/g/MeestorHok/Blue/badges/quality-score.png?b=master
-[ico-build]: https://scrutinizer-ci.com/g/MeestorHok/Blue/badges/build.png?b=master
+[ico-build]: https://travis-ci.org/MeestorHok/Blue.svg
 
-
+[link-travis]: https://travis-ci.org/MeestorHok/Blue
 [link-packagist]: https://packagist.org/packages/meestorhok/blue
 [link-scrutinizer]: https://scrutinizer-ci.com/g/meestorhok/blue
 [link-license]: ./LICENSE.md
