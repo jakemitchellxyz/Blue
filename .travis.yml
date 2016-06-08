@@ -1,20 +1,9 @@
-language: php
+language: php 
 php:
-  - '5.5.9'
-  - '5.6'
-  - '7.0'
-  - hhvm
-matrix:
-    allow_failures:
-        - php: hhvm
-before_install:
-  - composer self-update
-  - composer create-project laravel/laravel 
-  - cd ./laravel 
-  - composer require MeestorHok/Blue dev-master 
-  - composer update
-  - cp ./vendor/MeestorHok/Blue/tests/config/app.php ./app/config/testing/ 
-  - export APP_ENV="testing"
-  - cd ./vendor/MeestorHok/Blue
-
-script: phpunit --configuration phpunit.xml
+  - 5.5 
+  - 5.6 
+  - 7.0 
+  - hhvm 
+sudo: false
+install: travis_retry composer install --no-interaction --prefer-source 
+script: vendor/bin/phpunit
