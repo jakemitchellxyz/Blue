@@ -2,43 +2,26 @@
 
 use MeestorHok\Blue\Http\Controllers\AdminController;
 //use Illuminate\Contracts\View\Factory;
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Routing\RouteCollection;
-//use Illuminate\Routing\UrlGenerator as URL;
+use Illuminate\Routing\UrlGenerator;
 use Mockery as m;
 
 
-class AdminControllerTest extends Illuminate\Foundation\Testing\TestCase
+class AdminControllerTest extends PHPUnit_Framework_TestCase
 {
-    
-    /**
-     * The base URL to use while testing the application.
-     *
-     * @var string
-     */
-    protected $baseUrl = 'https://blue-meestorhok.c9users.io';
-
-    /**
-     * Creates the application.
-     *
-     * @return \Illuminate\Foundation\Application
-     */
-    public function createApplication()
+    public function setUp()
     {
-        // $app = require __DIR__.'/../bootstrap/app.php';
-
-        // $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
-
-        // return $app;
-        return m::mock('Illuminate\Contracts\Foundation\Application');
+        $this->urlGenerator = new UrlGenerator(new RouteCollection(), Request::create('/', 'GET'));
+        $this->app = m::mock('Illuminate\Contracts\Foundation\Application');
     }
     
-    // public function setUp() 
-    // { 
-    //     $this->urlGenerator = new UrlGenerator(new RouteCollection(), Request::create('/', 'GET'));
-    // }
+    public function tearDown() 
+    { 
+        m::close();
+    }
     
-    public function test_returns_dashboard_if_user_is_authenticated ()
+    public function testItReturnsTheDashboardIfUserIsAuthenticated ()
     {
         // $user = factory(App\User::class)->create();
         
@@ -46,11 +29,11 @@ class AdminControllerTest extends Illuminate\Foundation\Testing\TestCase
         //      ->call('GET', 'admin')
         //      ->see('Waddup, y\'all');
         // $this->assertTrue(true);
-        $this->call('GET', 'admin')->see('Waddup, y\'all');
+        $this->app->call('GET', 'admin')->see('Waddup, y\'all');
        // $this->assertFalse($request);
     }
     
-    public function test_redirects_to_login_if_user_is_not_authenticated ()
+    public function testItRedirectsToLoginIfUserIsNotAuthenticated ()
     {
         //$request = $this->urlGenerator->to('admin')->assertRedirectedTo('login');
         $this->assertTrue(true);
