@@ -5,6 +5,7 @@ use MeestorHok\Blue\Http\Controllers\AdminController;
 //use Illuminate\Http\Request;
 use Illuminate\Routing\RouteCollection;
 //use Illuminate\Routing\UrlGenerator as URL;
+use Mockery as m;
 
 
 class AdminControllerTest extends Illuminate\Foundation\Testing\TestCase
@@ -29,7 +30,7 @@ class AdminControllerTest extends Illuminate\Foundation\Testing\TestCase
         // $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
         // return $app;
-        return 'hello!';
+        return m::mock('Illuminate\Contracts\Foundation\Application');
     }
     
     // public function setUp() 
