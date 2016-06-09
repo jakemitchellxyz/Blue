@@ -32,7 +32,7 @@ class AdminControllerTest extends PHPUnit_Framework_TestCase
     
     public function test_redirects_to_login_if_user_is_not_authenticated ()
     {
-        $request = $this->urlGenerator->to(admin')->assertRedirectedTo('login');
+        $request = $this->urlGenerator->to('admin')->assertRedirectedTo('login');
         //$this->assertTrue(true);
     }
 }
