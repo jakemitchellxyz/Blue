@@ -11,7 +11,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 
-class AdminControllerTest extends PHPUnit_Framework_TestCase
+class AdminControllerTest extends Illuminate\Foundation\TestCase
 {
     
     /** 
