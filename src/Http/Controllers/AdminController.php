@@ -3,14 +3,15 @@
 namespace MeestorHok\Blue\Http\Controllers;
  
 use Illuminate\Routing\Controller;
+use Auth;
 
 class AdminController extends Controller
 {
-    public function __construct () {
-        $this->middleware('auth');
+    public function index () {
+        return redirect('admin/dashboard');
     }
- 
-    public function index() {
+    
+    public function showDashboard () {
         return view('Blue::admin.dashboard');
     }
 }

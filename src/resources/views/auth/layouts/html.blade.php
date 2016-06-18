@@ -1,0 +1,1 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Auth</title></head><body>@yield('body')</body></html>

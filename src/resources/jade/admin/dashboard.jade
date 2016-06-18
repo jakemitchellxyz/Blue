@@ -1,8 +1,134 @@
-@extends('Blue::admin.layouts.html')
+@extends('Blue::admin.layouts.layout')
 
-@section('body')
-main
-    h1 Welcome to the admin panel!
-    p Take a look around!
-
+@section('content')
+div.row
+    div.col-lg-3.col-md-6.col-sm-6.col-xs-12
+        a(href="#")
+            div.card.red.summary-inline
+                div.card-body
+                    i.icon.fa.fa-inbox.fa-4x
+                    div.content
+                        div.title 50
+                        div.sub-title New Mail
+                    div.clear-both
+    div.col-lg-3.col-md-6.col-sm-6.col-xs-12
+        a(href="#")
+            div.card.yellow.summary-inline
+                div.card-body
+                    i.icon.fa.fa-comments.fa-4x
+                    div.content
+                        div.title 23
+                        div.sub-title New Messages
+                    div.clear-both
+    div.col-lg-3.col-md-6.col-sm-6.col-xs-12
+        a(href="#")
+            div.card.green.summary-inline
+                div.card-body
+                    i.icon.fa.fa-tags.fa-4x
+                    div.content
+                        div.title 280
+                        div.sub-title Product View
+                    div.clear-both
+    div.col-lg-3.col-md-6.col-sm-6.col-xs-12
+        a(href="#")
+            div.card.blue.summary-inline
+                div.card-body
+                    i.icon.fa.fa-share-alt.fa-4x
+                    div.content
+                        div.title 16
+                        div.sub-title Share
+                    div.clear-both
+div.row.no-margin-bottom
+    div.col-sm-6.col-xs-12
+        div.row
+            div.col-xs-12
+                div.card.primary
+                    div.card-jumbotron.no-padding
+                        canvas#jumbotron-line-chart.chart.no-padding
+                    div.card-body.half-padding
+                        h4.float-left.no-margin.font-weight-300 Profits
+                        h2.float-right.no-margin.font-weight-300 $3200
+                        div.clear-both
+        div.row
+            div.col-md-6.col-xs-12
+                div.thumbnail.no-margin-bottom
+                    img.img-responsive(src="{{ asset('lib/img/picjumbo.com_IMG_4566.jpg') }}")
+                    div.caption
+                        h3#thumbnail-label Thumbnail label 
+                            a.anchorjs-link(href="#thumbnail-label"): span.anchorjs-icon
+                        p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                        p
+                            a.btn.btn-primary(href="#" role="button") Button
+                            a.btn.btn-default(href="#" role="button") Button
+            div.col-md-6.col-sm-12
+                div.thumbnail.no-margin-bottom
+                    img.img-responsive(src="{{ asset('lib/img/picjumbo.com_IMG_3241.jpg') }}")
+                    div.caption
+                        h3#thumbnail-label Thumbnail label 
+                            a.anchorjs-link(href="#thumbnail-label"): span.anchorjs-icon
+                        p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                        p
+                            a.btn.btn-primary(href="#" role="button") Button
+                            a.btn.btn-default(href="#" role="button") Button
+    div.col-sm-6.col-xs-12
+        div.row
+            div.col-md-6.col-sm-12
+                div.card.primary
+                    div.card-jumbotron.no-padding
+                        canvas#jumbotron-bar-chart.chart.no-padding
+                    div.card-body.half-padding
+                        h4.float-left.no-margin.font-weight-300 Orders
+                        div.clear-both
+            div.col-md-6.col-sm-12
+                div.card.primary
+                    div.card-jumbotron.no-padding
+                        canvas#jumbotron-line-2-chart.chart.no-padding
+                    div.card-body.half-padding
+                        h4.float-left.no-margin.font-weight-300 Pages view
+                        div.clear-both
+        div.card.card-success
+            div.card-header
+                div.card-title
+                    div.title
+                        i.fa.fa-comments-o
+                        | &nbsp;Last Message
+                div.clear-both
+            div.card-body.no-padding
+                ul.message-list
+                    a(href="#")
+                        li
+                            img.profile-img.pull-left(src="{{ asset('lib/img/profile-1.jpg') }}")
+                            div.message-block
+                                div
+                                    span.username Tui2Tone
+                                    span.message-datetime 12 min ago
+                                div.message Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                    a(href="#")
+                        li
+                            img.profile-img.pull-left(src="{{ asset('lib/img/profile-1.jpg') }}")
+                            div.message-block
+                                div
+                                    span.username Tui2Tone
+                                    span.message-datetime 12 min ago
+                                div.message Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                    a(href="#")
+                        li
+                            img.profile-img.pull-left(src="{{ asset('lib/img/profile-1.jpg') }}")
+                            div.message-block
+                                div
+                                    span.username Tui2Tone
+                                    span.message-datetime 12 min ago
+                                div.message Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                    a(href="#")
+                        li
+                            img.profile-img.pull-left(src="{{ asset('lib/img/profile-1.jpg') }}")
+                            div.message-block
+                                div
+                                    span.username Tui2Tone
+                                    span.message-datetime 12 min ago
+                                div.message Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                    a(href="#")
+                        li.text-center.load-more
+                            i.fa.fa-refresh
+                            | &nbsp;load more..
 @endsection

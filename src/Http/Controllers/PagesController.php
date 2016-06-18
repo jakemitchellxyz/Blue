@@ -78,7 +78,10 @@ class PagesController extends Controller
         return view('Blue::home');
     }
     
-    public function page ($page) {
+    public function page ($page = null) {
+        if (is_null($page)) {
+            return $this->home();
+        }
         return '<h1>'.$page.'</h1>';
     }
 }

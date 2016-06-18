@@ -15,6 +15,10 @@ class BlueServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'/resources/views', 'Blue');
+        
+        $this->publishes([
+            __DIR__.'/resources/lib' => public_path('lib'),
+        ], 'public');
     }
 
     /**
@@ -25,7 +29,5 @@ class BlueServiceProvider extends ServiceProvider
     public function register()
     {
         include __DIR__.'/Http/routes.php';
-        $this->app->make(__NAMESPACE__.'\Http\Controllers\AdminController');
-        $this->app->make(__NAMESPACE__.'\Http\Controllers\PagesController');
     }
 }
