@@ -27,13 +27,5 @@
         "psr-4": {
             "MeestorHok\\Blue\\": "src"
         }
-    },
-    "scripts": {
-        "post-install-cmd": {
-            "php artisan vendor:publish meestorhok/blue"
-        },
-        "post-update-cmd": {
-            "php artisan vendor:publish meestorhok/blue"
-        }
     }
 }

@@ -31,14 +31,14 @@ Add the following to config/app.php
 ],
 'aliases' => [
     'Html' => Collective\Html\HtmlFacade::class, // HTML facade
-    'Form' => Collective\Html\FormFacade::class, // HTML Form facade
-    'SEO' => Artesaos\SEOTools\Facades\SEOTools::class // SEO facade
+    'Form' => Collective\Html\FormFacade::class // HTML Form facade
 ]
 ```
 
-then, run this cli command to setup the database
+then, run these cli commands to setup the database and install resources
 
 ``` bash
+$ php artisan vendor:publish meestorhok/blue
 $ php artisan migrate --path=vendor/MeestorHok/Blue/src/migrations
 ```
 

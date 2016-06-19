@@ -1,6 +1,6 @@
 <?php
 
-namespace MeestorHok\Blue\Models;
+namespace MeestorHok\Blue;
 
 use \Illuminate\Database\Eloquent\Model as Eloquent;
 

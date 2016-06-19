@@ -1,0 +1,2 @@
+@extends('Blue::admin.layouts.layout')
+@section('content')<h1>Hello, World!</h1>@endsection
