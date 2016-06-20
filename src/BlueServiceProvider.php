@@ -14,6 +14,13 @@ class BlueServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->register('Collective\Html\HtmlServiceProvider');
+        $this->app->register('Artesaos\SEOTools\Providers\SEOToolsServiceProvider');
+        
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('Html', 'Collective\Html\HtmlFacade');
+        $loader->alias('Form', 'Collective\Html\FormFacade');
+        
         $this->loadViewsFrom(__DIR__.'/resources/views', 'Blue');
         
         $this->publishes([
