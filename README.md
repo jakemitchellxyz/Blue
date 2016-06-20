@@ -21,17 +21,11 @@ $ composer require meestorhok/blue
 
 ###Update the Laravel Framework
 
-Add the following to config/app.php
+Add the following provider to config/app.php
 
 ``` php
 'providers' => [
-    Collective\Html\HtmlServiceProvider::class, // HTML generator
-    Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class, // SEO generator
-    MeestorHok\Blue\BlueServiceProvider::class // Blue CMS
-],
-'aliases' => [
-    'Html' => Collective\Html\HtmlFacade::class, // HTML facade
-    'Form' => Collective\Html\FormFacade::class // HTML Form facade
+    MeestorHok\Blue\BlueServiceProvider::class
 ]
 ```
 
