@@ -26,7 +26,7 @@
     "autoload": {
         "psr-4": {
             "MeestorHok\\Blue\\": "src",
-            "MeestorHok\\Blue\\Tests": "tests"
+            "MeestorHok\\Blue\\Tests\\": "tests"
         }
     }
 }
