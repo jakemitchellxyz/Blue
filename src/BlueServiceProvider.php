@@ -14,18 +14,20 @@ class BlueServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->register('Collective\Html\HtmlServiceProvider');
-        $this->app->register('Artesaos\SEOTools\Providers\SEOToolsServiceProvider');
-        
-        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-        $loader->alias('Html', 'Collective\Html\HtmlFacade');
-        $loader->alias('Form', 'Collective\Html\FormFacade');
-        
         $this->loadViewsFrom(__DIR__.'/resources/views', 'Blue');
         
         $this->publishes([
-            __DIR__.'/resources/lib' => public_path('lib'),
-        ], 'public');
+            __DIR__.'/resources/public' => public_path('blue'),
+        ], 'frontend');
+        
+        $this->publishes([
+            __DIR__.'/Migrations' => database_path('migrations'),
+        ], 'migrations');
+        
+        $this->publishes([
+            __DIR__.'/Http/routes.blue.php' => app_path('Http/routes.blue.php'),
+            __DIR__.'/Http/routes.php' => app_path('Http/routes.php'),
+        ], 'routes');
     }
 
     /**
@@ -35,6 +37,19 @@ class BlueServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        include __DIR__.'/Http/routes.php';
+        $this->app->bind('SEO', function() {
+            return new \MeestorHok\Blue\SEOGenerator;
+        });
+        
+        require app_path('Http/routes.blue.php');
+        require_once(__DIR__.'/helpers.php');
+        
+        $this->app->register('Collective\Html\HtmlServiceProvider');
+        $this->app->register('Artesaos\SEOTools\Providers\SEOToolsServiceProvider');
+        
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('Html', 'Collective\Html\HtmlFacade');
+        $loader->alias('Form', 'Collective\Html\FormFacade');
+        $loader->alias('SEO', 'MeestorHok\Blue\Facades\SEOFacade');
     }
 }

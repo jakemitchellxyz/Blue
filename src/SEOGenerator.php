@@ -2,17 +2,38 @@
 
 namespace MeestorHok\Blue;
 
-use Artesaos\SEOTools\Facades\SEOTools as SEO;
+use Artesaos\SEOTools\Facades\SEOTools as SEOTools;
 use Request;
+use File;
 
 class SEOGenerator
 {
-    // DIR for icons
-    const FAVICONS = '/img/icons';
+    public $defaults;
+    public static $favicons;
     
-    public static function generateSEO (array $page)
+    public function __construct () {
+        $this->defaults = [
+            'title' => 'Home',
+            'title-spacer' => ' &#8211; ',
+            'title-description' => 'Laravel Blue',
+            'keywords' => array_collapse([['home'], ['laravel', 'blue', 'cms', 'meestorhok']]),
+            'description' => 'This amazing site was created by Laravel Blue!',
+            'images' => [],
+            'twitter' => '@BlueCMS',
+            'copyright' => '© 2016 Laravel Blue',
+            'robots' => 'index,follow',
+            'icon_dir' => '/blue/img/icons',
+            'colors' => [
+                'safari_pinned' => '#5bbad5',
+                'ms_tile' => '#da532c',
+                'theme' => '#ec500e'
+            ]
+        ];
+    }
+    
+    public function generateSEO (array $page)
     {
-        SEO::metatags()
+        SEOTools::metatags()
             ->setTitleDefault($page['title-description'])
             ->setTitleSeparator($page['title-spacer'])
             ->setTitle($page['title'])
@@ -24,84 +45,91 @@ class SEOGenerator
             ->addMeta('MobileOptimized', '320')
             ->addMeta('X-UA-Compatible', 'IE=edge', 'http-equiv')
             ->addMeta('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');
-        SEO::opengraph()
-            ->setTitle($page['title'] . $page['title-spacer'] . $page['title-description'])
+        SEOTools::opengraph()
+            ->setTitle($page['title'].$page['title-spacer'].$page['title-description'])
             ->setDescription($page['description'])
             ->setUrl(Request::url())
             ->addProperty('locale', 'en_US')
             ->addProperty('type', 'website');
-        SEO::twitter()
+        SEOTools::twitter()
             ->setSite($page['twitter'])
-            ->setTitle($page['title'] . $page['title-spacer'] . $page['title-description'])
+            ->setTitle($page['title'].$page['title-spacer'].$page['title-description'])
             ->setDescription($page['description'])
             ->setType('summary')
             ->setUrl(Request::url());
         foreach ($page['images'] as $image) {
-            SEO::opengraph()->addImage(asset($image['uri']));
-            SEO::twitter()->addImage(asset($image['uri']));
+            SEOTools::opengraph()->addImage(asset($image['uri']));
+            SEOTools::twitter()->addImage(asset($image['uri']));
         }
         foreach ($page['keywords'] as $keyword) {
-            SEO::metatags()->addKeyword($keyword);
+            SEOTools::metatags()->addKeyword($keyword);
         }
     }
     
-    public static function favicon () {
-        $colors = [
-            'safari-pinned' => '#5bbad5',
-            'ms-tile' => '#da532c',
-            'theme' => '#ec500e'
-        ];
-        
-        return
-            '<link rel="apple-touch-icon" sizes="57x57" href="' . asset(self::FAVICONS . '/apple-touch-icon-57x57.png') . '">' .
-            '<link rel="apple-touch-icon" sizes="60x60" href="' . asset(self::FAVICONS . '/apple-touch-icon-60x60.png') . '">' .
-            '<link rel="apple-touch-icon" sizes="72x72" href="' . asset(self::FAVICONS . '/apple-touch-icon-72x72.png') . '">' .
-            '<link rel="apple-touch-icon" sizes="76x76" href="' . asset(self::FAVICONS . '/apple-touch-icon-76x76.png') . '">' .
-            '<link rel="apple-touch-icon" sizes="114x114" href="' . asset(self::FAVICONS . '/apple-touch-icon-114x114.png') . '">' .
-            '<link rel="apple-touch-icon" sizes="120x120" href="' . asset(self::FAVICONS . '/apple-touch-icon-120x120.png') . '">' .
-            '<link rel="apple-touch-icon" sizes="144x144" href="' . asset(self::FAVICONS . '/apple-touch-icon-144x144.png') . '">' .
-            '<link rel="apple-touch-icon" sizes="152x152" href="' . asset(self::FAVICONS . '/apple-touch-icon-152x152.png') . '">' .
-            '<link rel="apple-touch-icon" sizes="180x180" href="' . asset(self::FAVICONS . '/apple-touch-icon-180x180.png') . '">' .
-            '<link rel="icon" type="image/png" href="' . asset(self::FAVICONS . '/favicon-16x16.png') . '" sizes="16x16">' .
-            '<link rel="icon" type="image/png" href="' . asset(self::FAVICONS . '/favicon-32x32.png') . '" sizes="32x32">' .
-            '<link rel="icon" type="image/png" href="' . asset(self::FAVICONS . '/favicon-96x96.png') . '" sizes="96x96">' .
-            '<link rel="icon" type="image/png" href="' . asset(self::FAVICONS . '/favicon-194x194.png') . '" sizes="194x194">' .
-            '<link rel="icon" type="image/png" href="' . asset(self::FAVICONS . '/android-chrome-192x192.png') . '" sizes="192x192">' .
-            '<link rel="manifest" href="' . asset(self::FAVICONS . '/manifest.json') . '">' .
-            '<link rel="mask-icon" href="' . asset(self::FAVICONS . '/safari-pinned-tab.svg') . '" color="' . $colors['safari-pinned'] . '">' .
-            '<link rel="shortcut icon" href="' . asset(self::FAVICONS . '/favicon.ico') . '">' .
-            '<meta name="msapplication-TileColor" content="' . $colors['ms-tile'] . '">' .
-            '<meta name="msapplication-TileImage" content="' . asset(self::FAVICONS . '/mstile-144x144.png') . '">' .
-            '<meta name="msapplication-config" content="' . asset(self::FAVICONS . '/browserconfig.xml') . '">' .
-            '<meta name="theme-color" content="' . $colors['theme'] . '">';
+    public function setFavicons () {
+        $favicon_dir = insert_if_exists($this->defaults['icon_dir']);
+        $colors = $this->defaults['colors'];
+        return  insert_if_exists (['60x60', '72x72', '114x114', '120x120', '152x152', '180x180'], function ($insert) use ($favicon_dir) {
+                        return '<link rel="apple-touch-icon" sizes="' . $insert . '" href="' . asset($favicon_dir . '/apple-touch-icon-' . $insert . '.png').'">';
+                    }, function ($insert) use ($favicon_dir) {
+                        return File::exists(public_path($favicon_dir.'/apple-touch-icon-'.$insert.'.png'));
+                    }) . 
+                insert_if_exists (['16x16', '32x32', '96x96', '194x194'], function ($insert) use ($favicon_dir) {
+                        return '<link rel="icon" type="image/png" href="' . asset($favicon_dir . '/favicon-' . $insert . '.png').'" sizes="'.$insert.'">';
+                    }, function ($insert) use ($favicon_dir) {
+                        return File::exists(public_path($favicon_dir.'/favicon-'.$insert.'.png'));
+                    }) . 
+                insert_if_exists (['192x192'], function ($insert) use ($favicon_dir) {
+                        return '<link rel="icon" type="image/png" href="' . asset($favicon_dir . '/android-chrome-' . $insert . '.png').'" sizes="'.$insert.'">';
+                    }, function ($insert) use ($favicon_dir) {
+                        return File::exists(public_path($favicon_dir.'/android-chrome-'.$insert.'.png'));
+                    }) . 
+                insert_if_exists ($favicon_dir.'/manifest.json', function ($insert) {
+                        return '<link rel="manifest" href="' . asset($insert) . '">';
+                    }, function ($insert) {
+                        return File::exists(public_path($insert));
+                    }) . 
+                insert_if_exists ($favicon_dir.'/safari-pinned-tab.svg', function ($insert) use ($colors) {
+                        return '<link rel="mask-icon" href="'.asset($insert).'" color="' . insert_if_exists($colors['safari_pinned']) . '">';
+                    }, function ($insert) {
+                        return File::exists(public_path($insert));
+                    }) . 
+                insert_if_exists ($favicon_dir.'/favicon.ico', function ($insert) {
+                        return '<link rel="shortcut icon" href="'.asset($insert).'">';
+                    }, function ($insert) {
+                        return File::exists(public_path($insert));
+                    }) . 
+                insert_if_exists ($favicon_dir.'/mstile-144x144.png', function ($insert) {
+                        return '<meta name="msapplication-TileImage" content="'.asset($insert).'">';
+                    }, function ($insert) {
+                        return File::exists(public_path($insert));
+                    }) . 
+                insert_if_exists ($favicon_dir.'/browserconfig.xml', function ($insert) {
+                        return '<meta name="msapplication-config" content="'.asset($insert).'">';
+                    }, function ($insert) {
+                        return File::exists(public_path($insert));
+                    }) . 
+                insert_if_exists ($colors['ms_tile'], function ($insert) {
+                        return '<meta name="msapplication-TileColor" content="'.$insert.'">';
+                    }) . 
+                insert_if_exists ($colors['theme'], function ($insert) {
+                        return '<meta name="theme-color" content="'.$insert.'">';
+                    });
     }
     
-    public static function make (array $details, $view = null)
+    public function make (array $details, $view = null)
     {
-        $defaults = [
-            'title' => 'Home',
-            'title-spacer' => ' &#8211; ',
-            'title-description' => 'Laravel Blue',
-            'keywords' => array_collapse([['home'], ['laravel', 'blue', 'cms', 'meestorhok']]),
-            'description' => 'This amazing site was created by Laravel Blue!',
-            'images' => [],
-            'twitter' => '@BlueCMS',
-            'copyright' => '© 2016 Laravel Blue',
-            'favicons' => '/img/icons',
-            'robots' => 'index,follow'
-        ];
+        $this->defaults = array_replace($this->defaults, $details);
         
-        $data = array_replace($defaults, $details);
-        
-        self::generateSEO($data);
+        $this->generateSEO($this->defaults);
         
         if (!is_null($view)) {
-            return view($view)->with('seo', self::get());
+            return view($view);
         }
     }
     
-    public static function get ()
+    public function get ()
     {
-        return str_replace(PHP_EOL, '', SEO::generate()) . self::favicon();
+        return str_replace(PHP_EOL, '', SEOTools::generate()) . $this->setFavicons();
     }
 }

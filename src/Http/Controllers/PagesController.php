@@ -4,10 +4,7 @@ namespace MeestorHok\Blue\Http\Controllers;
  
 use Illuminate\Routing\Controller;
 use Request;
-
-//use MeestorHok\Blue\Models\Site;
-//use MeestorHok\Blue\Models\Page as Page;
-use MeestorHok\Blue\SEOGenerator as SEO;
+use SEO;
 
 class PagesController extends Controller
 {
