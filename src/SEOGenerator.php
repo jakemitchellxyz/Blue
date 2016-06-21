@@ -24,9 +24,9 @@ class SEOGenerator
             'robots' => 'index,follow',
             'icon_dir' => '/blue/img/icons',
             'colors' => [
-                'safari_pinned' => '#5bbad5',
-                'ms_tile' => '#da532c',
-                'theme' => '#ec500e'
+                'safari_pinned' => '#151e4f',
+                'ms_tile' => '#ffffff',
+                'theme' => '#151e4f'
             ]
         ];
     }
@@ -66,10 +66,28 @@ class SEOGenerator
         }
     }
     
-    public function setFavicons () {
+    public function make (array $details, $view = null)
+    {
+        $this->defaults = array_replace($this->defaults, $details);
+        
+        $this->generateSEO($this->defaults);
+        
+        if (!is_null($view)) {
+            return view($view);
+        }
+    }
+    
+    public function get ()
+    {
+        return str_replace(PHP_EOL, '', SEOTools::generate()) . $this->getFavicons();
+    }
+    
+    public function setFavicons () 
+    {
         $favicon_dir = insert_if_exists($this->defaults['icon_dir']);
         $colors = $this->defaults['colors'];
-        return  insert_if_exists (['60x60', '72x72', '114x114', '120x120', '152x152', '180x180'], function ($insert) use ($favicon_dir) {
+        self::$favicons =
+                insert_if_exists (['60x60', '72x72', '114x114', '120x120', '152x152', '180x180'], function ($insert) use ($favicon_dir) {
                         return '<link rel="apple-touch-icon" sizes="' . $insert . '" href="' . asset($favicon_dir . '/apple-touch-icon-' . $insert . '.png').'">';
                     }, function ($insert) use ($favicon_dir) {
                         return File::exists(public_path($favicon_dir.'/apple-touch-icon-'.$insert.'.png'));
@@ -115,21 +133,14 @@ class SEOGenerator
                 insert_if_exists ($colors['theme'], function ($insert) {
                         return '<meta name="theme-color" content="'.$insert.'">';
                     });
+        return self::$favicons;
     }
     
-    public function make (array $details, $view = null)
+    public function getFavicons () 
     {
-        $this->defaults = array_replace($this->defaults, $details);
-        
-        $this->generateSEO($this->defaults);
-        
-        if (!is_null($view)) {
-            return view($view);
+        if (is_null(self::$favicons)) {
+            return $this->setFavicons();
         }
-    }
-    
-    public function get ()
-    {
-        return str_replace(PHP_EOL, '', SEOTools::generate()) . $this->setFavicons();
+        return self::$favicon;
     }
 }

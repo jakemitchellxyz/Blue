@@ -6,7 +6,8 @@ div.container
         div
             div.login-form.row
                 div.col-sm-12.text-center.login-header
-                    i.login-logo.fa.fa-first-order.fa-5x
+                    //-i.login-logo.fa.fa-first-order.fa-5x
+                    @include('Blue::partials.blue-logo', ['height' => '9em'])
                     h3.login-title Let's Get Started.
                 div.col-sm-12
                     div.card.login-body
