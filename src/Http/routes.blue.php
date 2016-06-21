@@ -8,6 +8,7 @@ Route::group(['namespace' => 'MeestorHok\\Blue\\Http\\Controllers', 'middleware'
     Route::group(['middleware' => SiteDoesntExistMiddleware::class], function () 
     { // if the user hasn't created a site yet
         Route::get('new', 'SiteController@showCreateForm');
+        Route::post('new', 'SiteController@createSite');
     });
     
     Route::group(['middleware' => SiteExistsMiddleware::class], function () 

@@ -1,5 +1,26 @@
 @extends('Blue::auth.layouts.html')
 
 @section('body')
-h1 Login!
+div.container
+    div.login-box
+        div
+            div.login-form.row
+                div.col-sm-12.text-center.login-header
+                    i.login-logo.fa.fa-first-order.fa-5x
+                    h4.login-title Welcome to Laravel Blue
+                div.col-sm-12
+                    div.login-body
+                        div#login-progress.progress.hidden
+                            div.progress-bar.progress-bar-success.progress-bar-striped.active(role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%")
+                                | Log In...
+                        {{ Form::open(['url' => url('login')]) }}
+                        div.control
+                            input.form-control(name="email" type="email" placeholder="admin@yoursite.com" value="{{ old('email') }}")
+                        div.control
+                            input.form-control(name="password" type="password" placeholder="123456")
+                        div.login-button.text-center
+                            input.btn.btn-primary(type="submit" value="Login")
+                        {{ Form::close() }}
+                    div.login-footer
+                        span.text-right: a.color-white(href="#") Forgot password?
 @endsection

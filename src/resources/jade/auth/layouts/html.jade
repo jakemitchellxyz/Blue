@@ -12,5 +12,6 @@ html(lang="en")
         //- App Styles
         link(rel="stylesheet" href="{{ asset('blue/css/style.css') }}")
         link(rel="stylesheet" href="{{ asset('blue/css/flat-blue.css') }}")
-    body
+    body.flat-blue.login-page
         @yield('body')
+        script(type="text/javascript" src="{{ asset('blue/js/jquery.min.js') }}")
