@@ -52,10 +52,10 @@ class BlueServiceProvider extends ServiceProvider
         $this->app->register('Collective\Html\HtmlServiceProvider');
         $this->app->register('Artesaos\SEOTools\Providers\SEOToolsServiceProvider');
         
-        $this->app->router->middleware('siteExists', MeestorHok\Blue\Http\Middleware\SiteExistsMiddleware::class);
-        $this->app->router->middleware('siteDoesntExist', MeestorHok\Blue\Http\Middleware\SiteDoesntExistMiddleware::class);
-        $this->app->router->middleware('adminExists', MeestorHok\Blue\Http\Middleware\AdminExistsMiddleware::class);
-        $this->app->router->middleware('adminDoesntExist', MeestorHok\Blue\Http\Middleware\AdminDoesntExistMiddleware::class);
+        $this->app->router->middleware('siteExists', \MeestorHok\Blue\Http\Middleware\SiteExistsMiddleware::class);
+        $this->app->router->middleware('siteDoesntExist', \MeestorHok\Blue\Http\Middleware\SiteDoesntExistMiddleware::class);
+        $this->app->router->middleware('adminExists', \MeestorHok\Blue\Http\Middleware\AdminExistsMiddleware::class);
+        $this->app->router->middleware('adminDoesntExist', \MeestorHok\Blue\Http\Middleware\AdminDoesntExistMiddleware::class);
         
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
         $loader->alias('Html', 'Collective\Html\HtmlFacade');
