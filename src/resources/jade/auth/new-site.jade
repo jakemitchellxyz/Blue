@@ -7,26 +7,25 @@ div.container
             div.login-form.row
                 div.col-sm-12.text-center.login-header
                     //-i.login-logo.fa.fa-first-order.fa-5x
-                    @include('Blue::partials.blue-logo', ['height' => '9em'])
+                    img.login-logo(src="{{ asset('/blue/img/Laravel_Blue.svg') }}" alt="Laravel Blue Logo" style="height:9em;width:auto")
                     h3.login-title Let's Get Started.
                 div.col-sm-12
                     div.card.login-body
                         div.card-body(style="padding:0 10px")
-                            div#login-progress.progress.hidden
-                                div.progress-bar.progress-bar-success.progress-bar-striped.active(role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%")
-                                    | Working some magic...
-                            {{ Form::open(['url' => url('new'), 'id' => 'form-basic-info']) }}
-                            div.form-group
-                                div.sub-title Site Name
-                                input.form-control(name="site-title" type="text" placeholder="My Awesome Site" value="{{ old('site-title') }}")
-                            div.form-group
-                                div.sub-title Username
-                                input.form-control(name="username" type="text" placeholder="BillyBob23")
-                            div.form-group
-                                div.sub-title Password
-                                input.form-control(name="password" type="password" placeholder="{{ '•••••••' }}")
+                            // @if($errors->any())
+                            // @foreach ($errors->all() as $error)
+                            // p.lead(style="color:red") {{ $error }}
+                            // @endforeach
+                            // @endif
+                            {{ Form::open(['url' => route('create.site'), 'id' => 'form-basic-info']) }}
+                            {{ Form::blueText('Site Name', ['placeholder' => 'My Awesome Site', 'required' => true]) }}
+                            {{ Form::blueText('Slogan', ['placeholder' => 'Rockin\' your world!']) }}
+                            {{ Form::blueTextarea('Description', ['placeholder' => 'Describe your site in all its glory!', 'style' => 'resize:none', 'required' => true]) }}
+                            //- Keywords
+                            //- Logo upload
+                            {{ Form::blueText('Copyright', ['placeholder' => '2016 Your Company LLC']) }}
+                            //- should site be hidden from search engines?
                             div.login-button.text-center
-                                button.btn.btn-primary(type="submit") Next&nbsp;
-                                    i.fa.fa-angle-double-right
+                                {{ Form::button('Next <i class="fa fa-angle-double-right"></i>', ['class' => 'btn btn-primary', 'type' => 'submit']) }}
                             {{ Form::close() }}
 @endsection

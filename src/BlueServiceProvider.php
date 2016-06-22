@@ -3,6 +3,7 @@
 namespace MeestorHok\Blue;
 
 use Illuminate\Support\ServiceProvider;
+use Form;
 
 class BlueServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,10 @@ class BlueServiceProvider extends ServiceProvider
             __DIR__.'/Http/routes.blue.php' => app_path('Http/routes.blue.php'),
             __DIR__.'/Http/routes.php' => app_path('Http/routes.php'),
         ], 'routes');
+        
+        Form::component('blueText', 'Blue::components.text', ['name', 'attributes' => []]);
+        Form::component('blueTextarea', 'Blue::components.textarea', ['name', 'attributes' => []]);
+        Form::component('bluePassword', 'Blue::components.password', ['name', 'attributes' => []]);
     }
 
     /**
@@ -46,6 +51,11 @@ class BlueServiceProvider extends ServiceProvider
         
         $this->app->register('Collective\Html\HtmlServiceProvider');
         $this->app->register('Artesaos\SEOTools\Providers\SEOToolsServiceProvider');
+        
+        $this->app->router->middleware('siteExists', MeestorHok\Blue\Http\Middleware\SiteExistsMiddleware::class);
+        $this->app->router->middleware('siteDoesntExist', MeestorHok\Blue\Http\Middleware\SiteDoesntExistMiddleware::class);
+        $this->app->router->middleware('adminExists', MeestorHok\Blue\Http\Middleware\AdminExistsMiddleware::class);
+        $this->app->router->middleware('adminDoesntExist', MeestorHok\Blue\Http\Middleware\AdminDoesntExistMiddleware::class);
         
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
         $loader->alias('Html', 'Collective\Html\HtmlFacade');

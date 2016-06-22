@@ -2,7 +2,7 @@
 
 namespace MeestorHok\Blue\Http\Controllers;
  
-use Illuminate\Routing\Controller;
+use MeestorHok\Blue\Http\Controllers\Controller;
 use Auth;
 
 class AdminController extends Controller

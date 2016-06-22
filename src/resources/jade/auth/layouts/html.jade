@@ -6,13 +6,13 @@ html(lang="en")
         
         //- Fonts
         link(rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,400")
-        link(rel="stylesheet" href="{{ asset('blue/css/blue-logo.css') }}")
         //- Resource Styles
         link(rel="stylesheet" href="{{ asset('blue/css/bootstrap.min.css') }}")
         link(rel="stylesheet" href="{{ asset('blue/css/font-awesome.min.css') }}")
         //- App Styles
         link(rel="stylesheet" href="{{ asset('blue/css/style.css') }}")
         link(rel="stylesheet" href="{{ asset('blue/css/flat-blue.css') }}")
-    body.flat-blue.login-page
+    body.flat-blue.login-page.new-site-page
         @yield('body')
         script(type="text/javascript" src="{{ asset('blue/js/jquery.min.js') }}")
+        script(type="text/javascript" src="{{ asset('blue/js/bootstrap.min.js') }}")

@@ -15,12 +15,12 @@ class CreateSitesTable extends Migration
         Schema::create('sites', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('twitter');
-            $table->string('base_url');
-            $table->string('isMobileOptimized');
-            $table->string('keywords');
+            $table->string('slogan');
             $table->string('description');
-            $table->rememberToken();
+            $table->string('social_links');
+            $table->string('keywords');
+            $table->string('copyright');
+            $table->tinyInteger('is_public_site');
             $table->timestamps();
         });
     }

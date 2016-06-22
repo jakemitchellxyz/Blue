@@ -1,8 +1,8 @@
 <?php
 
 namespace MeestorHok\Blue\Http\Controllers;
- 
-use Illuminate\Routing\Controller;
+
+use MeestorHok\Blue\Http\Controllers\Controller;
 use Request;
 use SEO;
 

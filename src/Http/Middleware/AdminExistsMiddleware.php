@@ -3,9 +3,9 @@
 namespace MeestorHok\Blue\Http\Middleware;
 
 use Closure;
-use MeestorHok\Blue\Site;
+use MeestorHok\Blue\User;
 
-class SiteDoesntExistMiddleware
+class AdminExistsMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class SiteDoesntExistMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Site::all()->count() > 0) {
-            return redirect()->to('/');
+        if (User::all()->count() <= 0) {
+            return redirect()->to('admin/new');
         }
         
         return $next($request);

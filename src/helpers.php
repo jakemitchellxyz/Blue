@@ -10,18 +10,16 @@ if (! function_exists('insert_if_exists')) {
                 }
                 return $ret; // return total
             }
-            if (!is_null($match)) { // if a match function is set
-                if (!$match($insert)) { // if item doesn't match the given function
-                    return ''; // return nothing
-                }
+            if (!is_null($match) && !$match($insert)) { // if a match function is set and item doesn't match
+                return ''; // return nothing
             }
-            if (!is_null($template) && is_callable($template)) { // if a template is set and is a function
-                return $template($insert); // insert value into the template
+            if (!is_null($template)) { // if a template is set
+                if (is_callable($template)) { // if the template is a function
+                    return $template($insert); // insert value into the function
+                }
+                return $template; // use the template as a replacement
             }
             return $insert; // else, return the value
-        }
-        if (!is_null($template) && !is_callable($template)) { // if the template variable is not a function
-            return $template; // use the template as the default
         }
         return ''; // if item doesn't exist, return nothing
     }

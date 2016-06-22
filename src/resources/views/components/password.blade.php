@@ -1,0 +1,1 @@
+<div class="form-group"><div class="sub-title">{{ $name }}</div>{{ Form::password(camel_case($name), array_merge(['class' => 'form-control', 'placeholder' => '•••••••'], $attributes)) }}</div>

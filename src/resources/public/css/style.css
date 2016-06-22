@@ -409,7 +409,7 @@ a:hover {
   .card .card-body {
     padding: 25px; }
     .card .card-body .sub-title {
-      font-size: 1.2em;
+      font-size: 1.3em;
       padding: 1.1em 0em 0.4em 0em;
       margin-bottom: 0; }
       .card .card-body .sub-title .description {
@@ -574,12 +574,18 @@ a:hover {
     .thumbnail .caption .h1, .thumbnail .caption .h2, .thumbnail .caption .h3, .thumbnail .caption h1, .thumbnail .caption h2, .thumbnail .caption h3 {
       margin-top: 15px; }
 
-body.login-page {
-  background: url(../img/login-background.jpg) no-repeat center center fixed;
+body.new-site-page {
+  background: url(../img/new-site-background.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; }
+body.login-page:not(.new-site-page) {
+    background: url(../img/login-background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; }
   body.login-page .login-box {
     width: 100%;
     max-width: 500px;

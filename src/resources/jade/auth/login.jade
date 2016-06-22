@@ -16,8 +16,8 @@ div.container
                         {{ Form::open(['url' => url('login')]) }}
                         div.control
                             input.form-control(name="email" type="email" placeholder="admin@yoursite.com" value="{{ old('email') }}")
-                        div.control
-                            input.form-control(name="password" type="password" placeholder="123456")
+                        {{ Form::bluePassword('Password') }}
+                        {{ Form::bluePassword('Confirm Password', ['name' => 'password_confirmation']) }}
                         div.login-button.text-center
                             input.btn.btn-primary(type="submit" value="Login")
                         {{ Form::close() }}
