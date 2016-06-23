@@ -1,0 +1,22 @@
+@extends('Blue::auth.layouts.html')
+
+@section('body')
+div.container
+    div.login-box
+        div
+            div.login-form.row
+                div.col-sm-12.text-center.login-header
+                    img.login-logo(src="{{ asset('/blue/img/Laravel_Blue.svg') }}" alt="Laravel Blue Logo" style="height:9em;width:auto")
+                    h3.login-title Create your account.
+                div.col-sm-12
+                    div.card.login-body
+                        div.card-body(style="padding:0 10px")
+                            {{ Form::open(['url' => route('create.site'), 'id' => 'form-basic-info']) }}
+                            {{ Form::blueText('Name', ['placeholder' => 'My Awesome Site', 'required' => true]) }}
+                            {{ Form::blueEmail('Email', ['placeholder' => 'you@example.com', 'required' => true]) }}
+                            {{ Form::bluePassword('Password') }}
+                            {{ Form::bluePassword('Confirm Password', ['name' => 'password_confirmation']) }}
+                            div.login-button.text-center
+                                {{ Form::button('Create Admin <i class="fa fa-angle-double-right"></i>', ['class' => 'btn btn-primary', 'type' => 'submit']) }}
+                            {{ Form::close() }}
+@endsection

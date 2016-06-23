@@ -18,6 +18,7 @@ class CreateSitesTable extends Migration
             $table->string('slogan');
             $table->string('description');
             $table->string('social_links');
+            $table->string('favicons', 1000);
             $table->string('keywords');
             $table->string('copyright');
             $table->tinyInteger('is_public_site');

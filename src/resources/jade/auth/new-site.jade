@@ -6,26 +6,35 @@ div.container
         div
             div.login-form.row
                 div.col-sm-12.text-center.login-header
-                    //-i.login-logo.fa.fa-first-order.fa-5x
-                    img.login-logo(src="{{ asset('/blue/img/Laravel_Blue.svg') }}" alt="Laravel Blue Logo" style="height:9em;width:auto")
+                    img.login-logo(src="{{ asset('blue/img/Laravel_Blue.svg') }}" alt="Laravel Blue Logo" style="height:9em;width:auto")
                     h3.login-title Let's Get Started.
                 div.col-sm-12
                     div.card.login-body
                         div.card-body(style="padding:0 10px")
-                            // @if($errors->any())
-                            // @foreach ($errors->all() as $error)
-                            // p.lead(style="color:red") {{ $error }}
-                            // @endforeach
-                            // @endif
                             {{ Form::open(['url' => route('create.site'), 'id' => 'form-basic-info']) }}
                             {{ Form::blueText('Site Name', ['placeholder' => 'My Awesome Site', 'required' => true]) }}
                             {{ Form::blueText('Slogan', ['placeholder' => 'Rockin\' your world!']) }}
                             {{ Form::blueTextarea('Description', ['placeholder' => 'Describe your site in all its glory!', 'style' => 'resize:none', 'required' => true]) }}
-                            //- Keywords
+                            {{ Form::blueText('Keywords', ['placeholder' => 'Website, About, Awesome, Stuff', 'required' => true]) }}
                             //- Logo upload
+                            //- Social Buttons
                             {{ Form::blueText('Copyright', ['placeholder' => '2016 Your Company LLC']) }}
-                            //- should site be hidden from search engines?
+                            {{ Form::blueToggle('Hide From Search Engines', '1', false, ['class' => 'toggle-checkbox']) }}
                             div.login-button.text-center
-                                {{ Form::button('Next <i class="fa fa-angle-double-right"></i>', ['class' => 'btn btn-primary', 'type' => 'submit']) }}
+                                {{ Form::button('Create Site <i class="fa fa-angle-double-right"></i>', ['class' => 'btn btn-primary', 'type' => 'submit']) }}
                             {{ Form::close() }}
+@endsection
+
+@section('styles')
+link(rel="stylesheet" href="{{ asset('blue/css/bootstrap-switch.min.css') }}")
+@endsection
+
+@section('scripts')
+script(src="{{ asset('blue/js/bootstrap-switch.min.js') }}")
+script.
+    $(function () {
+        return $('.toggle-checkbox').bootstrapSwitch({
+            size: "small"
+        });
+    });
 @endsection

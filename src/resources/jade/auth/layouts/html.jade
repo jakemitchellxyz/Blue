@@ -1,6 +1,7 @@
 doctype html
 html(lang="en")
     head
+        //- Meta SEO generation
         meta(charset="utf-8")
         {!! SEO::get() !!}
         
@@ -12,7 +13,12 @@ html(lang="en")
         //- App Styles
         link(rel="stylesheet" href="{{ asset('blue/css/style.css') }}")
         link(rel="stylesheet" href="{{ asset('blue/css/flat-blue.css') }}")
+        //- Styles for individual views
+        @yield('styles')
     body.flat-blue.login-page.new-site-page
         @yield('body')
+        //- Framework JS
         script(type="text/javascript" src="{{ asset('blue/js/jquery.min.js') }}")
         script(type="text/javascript" src="{{ asset('blue/js/bootstrap.min.js') }}")
+        //- Scripts for individual view
+        @yield('scripts')

@@ -1,0 +1,1 @@
+<div class="sub-title">{{ $name }}</div><div>{{ Form::checkbox(camel_case($name), $value, $checked, $attributes) }}</div>

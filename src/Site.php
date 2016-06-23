@@ -13,6 +13,6 @@ class Site extends Model
      */
     protected $fillable = [
         'title', 'social_links', 'description', 'slogan',
-        'keywords', 'copyright', 'is_public_site'
+        'keywords', 'copyright', 'is_public_site', 'favicons'
     ];
 }

@@ -31,6 +31,8 @@ class BlueServiceProvider extends ServiceProvider
         ], 'routes');
         
         Form::component('blueText', 'Blue::components.text', ['name', 'attributes' => []]);
+        Form::component('blueEmail', 'Blue::components.email', ['name', 'attributes' => []]);
+        Form::component('blueToggle', 'Blue::components.toggle', ['name', 'value' => null, 'checked' => false, 'attributes' => []]);
         Form::component('blueTextarea', 'Blue::components.textarea', ['name', 'attributes' => []]);
         Form::component('bluePassword', 'Blue::components.password', ['name', 'attributes' => []]);
     }
